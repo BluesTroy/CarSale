@@ -1,4 +1,9 @@
+server:
+    port: 8080
+#    domain: 'www.bluestroy.com'
 ---
+datalist:
+    max: 5
 grails:
     profile: web
     codegen:
@@ -8,6 +13,7 @@ info:
         name: '@info.app.name@'
         version: '@info.app.version@'
         grailsVersion: '@info.app.grailsVersion@'
+        displayName: 'Car Manage'
 spring:
     groovy:
         template:
