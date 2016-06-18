@@ -4,10 +4,10 @@ import grails.test.mixin.TestFor
 import spock.lang.Specification
 
 /**
- * See the API for {@link grails.test.mixin.web.GroovyPageUnitTestMixin} for usage instructions
+ * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
  */
-@TestFor(DomainErrorTagLib)
-class DomainErrorTagLibSpec extends Specification {
+@TestFor(CarInfoService)
+class CarInfoServiceSpec extends Specification {
 
     def setup() {
     }
