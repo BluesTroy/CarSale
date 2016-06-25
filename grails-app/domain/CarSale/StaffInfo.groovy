@@ -13,7 +13,6 @@ class StaffInfo {
     String telephone
     String phone
     String email
-    SystemRole systemRole
 
     static constraints = {
         staffCode nullable: false,maxSize: 20
