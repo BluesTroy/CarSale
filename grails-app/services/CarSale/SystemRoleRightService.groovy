@@ -12,4 +12,25 @@ class SystemRoleRightService {
             systemRoleRight.save()
         }
     }
+
+
+    //为某一个角色授权，同时保存多条数据
+    def saveRoleRights(systemRole,menuList){
+
+        //先删除掉与该角色相关的记录
+        def roleRightList = SystemRoleRight.findAllBySystemRole(systemRole)
+        roleRightList.each {
+            def rs = SystemRoleRight.get(it.id)
+            rs.delete(flush:true)
+        }
+
+
+        int size = menuList.size()
+        for(int i = 0;i<size;i++){
+            def systemRoleRight = new SystemRoleRight()
+            systemRoleRight.systemRole = systemRole
+            systemRoleRight.systemMenu = SystemMenu.get(menuList.get(i).menuId)
+            save(systemRoleRight)
+        }
+    }
 }

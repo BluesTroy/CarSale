@@ -12,6 +12,7 @@ class SystemMenu {
     String menuIcon
     String menuUrl
     String parentMenu
+    String rootPath
 
     static constraints = {
         menuName nullable: false, maxSize: 20

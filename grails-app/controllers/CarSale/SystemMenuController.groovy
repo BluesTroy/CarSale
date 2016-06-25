@@ -18,12 +18,13 @@ class SystemMenuController {
         if (!params.max) params.max = 2
         if (!params.offset) params.offset = 0
         if (!params.order) params.order = 'desc'
-        if (!params.sort) params.sort = 'dateCreated'
+        if (!params.sort) params.sort = 'rootPath'
 
         def searchClosure = {
             if (params.menuName) {
                 like('menuName', "%${params.menuName}%")
             }
+            order("rootPath", "asc")
         }
 
         def c = SystemMenu.createCriteria()
@@ -59,10 +60,14 @@ class SystemMenuController {
         if (params.domainAction == 'edit') {
             systemMenu = SystemMenu.get(params.id)
             systemMenu.properties = params
-//            systemMenu.parentMenu=params.parentMenu.toString()
         } else if (params.domainAction == 'create') {
             systemMenu = new SystemMenu(params)
-//            systemMenu.parentMenu=params.parentMenu.toString()
+            systemMenuService.save(systemMenu)
+            if(systemMenu.parentMenu.length()>0){
+                systemMenu.rootPath= systemMenu.parentMenu+","+systemMenu.id
+            }else{
+                systemMenu.rootPath=systemMenu.id
+            }
         }
         if (!systemMenu.validate()) {
             haserror = true
