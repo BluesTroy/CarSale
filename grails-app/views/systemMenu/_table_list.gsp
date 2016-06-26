@@ -1,7 +1,7 @@
 <%@ page import="CarSale.SystemMenu" %>
 <div class="box box-primary">
     <div class="box-body table-responsive no-padding">
-        <table id="systemMenuTable" class="table table-hover table-bordered table-striped table-condensed">
+        <table id="systemMenuTable" class="table table-hover table-condensed">
             <thead>
             <tr>
                 <th>菜单名</th>
@@ -16,13 +16,15 @@
             <tbody id="domainTableTbody">
             <g:each in="${systemMenuList}">
                 <tr id="tr_${it.id}" onclick="showSystemMenu('${it.id}')" class="cursorPointer">
-                    <td id="td_menuName_${it.id}">${it.menuName}</td>
+
 
                     <g:if test="${it.parentMenu == null || it.parentMenu == ''}">
+                        <td id="td_menuName_${it.id}"><strong>${it.menuName}</strong></td>
                         <td>一级菜单</td>
                         <td>无</td>
                     </g:if>
                     <g:else>
+                        <td id="td_menuName_${it.id}" style="padding-left: 40px"><img style="height: 13px;width: 20px;" src="/img/turned-arrow.png" /><strong>${it.menuName}</strong></td>
                         <td>二级菜单</td>
                         <td>${CarSale.SystemMenu.get(it?.parentMenu)?.menuName}</td>
                     </g:else>

@@ -50,6 +50,7 @@ class StaffInfoController {
         render(template: "/${controllerName}/form",
                 model: [staffInfo: StaffInfo.get(params.id), action: actionName])
     }
+    def welcome(){}
 
     def save() {
         def haserror = false

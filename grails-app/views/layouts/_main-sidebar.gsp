@@ -1,3 +1,4 @@
+<%@ page import="CarSale.SystemMenu" %>
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
 
@@ -11,9 +12,9 @@
             </div>
 
             <div class="pull-left info">
-                <p>胡新强</p>
+                <p>${session.staff.realName}</p>
                 <!-- Status -->
-                <a href="#"><i class="fa fa-circle text-success"></i> 下午好</a>
+                <a href="#"><i class="fa fa-circle text-success"></i> 工作顺利</a>
             </div>
         </div>
 
@@ -21,30 +22,31 @@
         <ul class="sidebar-menu">
             <li class="header">菜单</li>
             <!-- Optionally, you can add icons to the links -->
+            <g:set var="systemStaffRoleService" bean="systemStaffRoleService"></g:set>
+            <g:each in="${systemStaffRoleService.getStaffFirstMenus(session.staff)}">
+
+
             <li class="active treeview">
                 <a href="#">
-                    <i class="fa fa-dashboard"></i> <span>汽车基本信息</span> <i class="fa fa-angle-left pull-right"></i>
+                    <i class="fa ${it.menuIcon}"></i> <span>${it.menuName}</span> <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> 汽车基本信息</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> 汽车详情</a></li>
+                    <g:each var="subMenu" in="${CarSale.SystemMenu.findAllByParentMenu(it.id).sort{it.rootPath}}">
+                        <g:if test="${session.menuUrl == subMenu?.menuUrl}">
+                            <li class="subMenu active"></g:if>
+                        <g:else>
+                            <li class="subMenu">
+                        </g:else>
+                    <a href="${subMenu?.menuUrl}"><i class="fa fa-circle-o"></i> ${subMenu?.menuName}</a></li>
+                    </g:each>
                 </ul>
             </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-files-o"></i>
-                    <span>Layout Options</span>
-                    <span class="label label-primary pull-right">4</span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Boxed</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Fixed</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Collapsed Sidebar
-                    </a></li>
-                </ul>
-            </li>
+            </g:each>
+
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->
 </aside>
+<script>
+    $("li.subMenu.active").parents(".treeview").addClass("active");
+</script>

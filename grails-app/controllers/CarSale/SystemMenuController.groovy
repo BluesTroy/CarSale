@@ -15,7 +15,7 @@ class SystemMenuController {
     }
 
     protected def search(params) {
-        if (!params.max) params.max = 2
+        if (!params.max) params.max = 100
         if (!params.offset) params.offset = 0
         if (!params.order) params.order = 'desc'
         if (!params.sort) params.sort = 'rootPath'

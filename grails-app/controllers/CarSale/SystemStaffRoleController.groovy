@@ -2,6 +2,9 @@ package CarSale
 
 import grails.converters.JSON
 
+import static CarSale.StaffInfo.createCriteria
+import static CarSale.StaffInfo.get
+
 class SystemStaffRoleController {
 
     static layout = "main"
@@ -11,7 +14,7 @@ class SystemStaffRoleController {
     def loadPage() {
         def result = search(params)
         render(template: "/${controllerName}/table_list",
-                model:[systemStaffRoleList:result.systemStaffRoleList, total: result.total])
+                model:[staffInfoList:result.staffInfoList, total: result.total])
     }
 
     protected def search(params) {
@@ -24,14 +27,14 @@ class SystemStaffRoleController {
             if (params.staffCode) {
                 like('staffCode', "%${params.staffCode}%")
             }
-            if (params.realName) {
+            if (params.description) {
                 like('realName', "%${params.realName}%")
             }
         }
 
-        def c = SystemStaffRole.createCriteria()
-        def systemStaffRoleList = c.list(params,searchClosure)
-        [systemStaffRoleList:systemStaffRoleList, total: systemStaffRoleList.totalCount]
+        def c = StaffInfo.createCriteria()
+        def staffInfoList = c.list(params,searchClosure)
+        [staffInfoList:staffInfoList, total: staffInfoList.totalCount]
 
 
     }
@@ -47,24 +50,33 @@ class SystemStaffRoleController {
     }
 
     def edit() {
+        def staffInfo = StaffInfo.get(params.id)
+
+        log.debug("---------------")
+        systemStaffRoleService.getStaffMenus(staffInfo).each {
+            log.debug(it.menuName)
+        }
+
+
+
+        def systemStaffRoleList = SystemStaffRole.findAllByStaffInfo(staffInfo)
+        def staffRoles = systemStaffRoleService.getStaffRoles(staffInfo)
+        def staffNotRoles = systemStaffRoleService.getStaffNotRoles(staffInfo)
+        log.debug("----------------------------")
+        log.debug(systemStaffRoleList)
+        log.debug(staffRoles)
         render(template: "/${controllerName}/form",
-                model: [systemStaffRole: SystemStaffRole.get(params.id), action: actionName])
+                model: [staffInfo:staffInfo,systemStaffRoleList: systemStaffRoleList,staffRoles:staffRoles,staffNotRoles:staffNotRoles, action: actionName])
     }
 
     def save() {
         def haserror = false
         def message = new StringBuffer()
         def systemStaffRole
-
         log.error(params)
-        println(actionName)
-        println(params.domainAction)
-        if (params.domainAction == 'edit') {
-            systemStaffRole = SystemStaffRole.get(params.id)
-            systemStaffRole.properties = params
-        } else if (params.domainAction == 'create') {
-            systemStaffRole = new SystemStaffRole(params)
-        }
+        systemStaffRole = new SystemStaffRole(params)
+        systemStaffRole.staffInfo = get(params.staffInfoId)
+        systemStaffRole.systemRole = SystemRole.get(params.systemRoleId)
         if (!systemStaffRole.validate()) {
             haserror = true
             message.append(g.domainError([model:systemStaffRole]))
@@ -72,20 +84,22 @@ class SystemStaffRoleController {
             systemStaffRoleService.save(systemStaffRole)
             message.append('操作成功')
         }
-        render(contentType: "application/json", encoding: "UTF-8") {
-            def result = ["status" : haserror ? "failed" : "success",
-                          "message": message]
-            render result as JSON
 
+        render(contentType: "application/json") {
+            def result = ["status" : haserror ? "failed" : "success",
+                          "message": message, "systemStaffRole": systemStaffRole]
+            render result as JSON
         }
 
     }
 
     def delete() {
-        def systemStaffRole = SystemStaffRole.get(params.id)
-        systemStaffRole.delete(flush:true)
-        render(contentType:'application/json'){
-            def result=['status':'success','message':'操作成功']
+        def staffInfo = get(params.staffInfoId)
+        def systemRole = SystemRole.get(params.systemRoleId)
+        def systemStaffRole = SystemStaffRole.findByStaffInfoAndSystemRole(staffInfo,systemRole)
+        systemStaffRole.delete(flush: true)
+        render(contentType: "application/json") {
+            def result = ["status": "success", "message": "操作成功"]
             render result as JSON
         }
 

@@ -42,11 +42,6 @@
                 <input id="email" class="form-control" type="email" placeholder="123@163.com"
                        name="email" value="${staffInfo?.email}">
             </div>
-            <div class="form-group col-md-3">
-                <label for="systemRole">仓库</label>
-                <g:select id="systemRole" name="systemRole" class="form-control" from="${CarSale.SystemRole.list()}" noSelection="['':'请选择...']" optionKey="id"
-                          optionValue="roleName" />
-            </div>
         </div>
     </g:form>
 </div>

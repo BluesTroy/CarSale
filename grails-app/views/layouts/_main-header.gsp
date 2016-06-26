@@ -65,7 +65,7 @@
                         <li class="user-header">
                             <img src="/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                             <p>
-                                胡新强 - Web Developer
+                                ${session.staff?.realName} - Web Developer
                                 <small>个人简介信息</small>
                             </p>
                         </li>
@@ -87,8 +87,7 @@
                                 <a href="#" class="btn btn-default btn-flat">设置</a>
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat" >退出</a>
-                                %{--<button type="button" class="btn btn-default btn-flat" onclick="logout()">退出</button>--}%
+                                <button type="button" class="btn btn-default btn-flat" onclick="logout()">退出</button>
                             </div>
                         </li>
                     </ul>
@@ -98,15 +97,15 @@
     </nav>
 </header>
 
-%{--<script>--}%
-%{--function logout(){--}%
-%{--$.post("/work/accountInfo/logout",null, function (bdata) {--}%
-%{--if(bdata.status!="success"){--}%
-%{--bootbox.alert("退出失败！")--}%
-%{--}else{--}%
-%{--window.location="/work/login/index";--}%
-%{--}--}%
-%{--},"json");--}%
-%{--}--}%
+<script>
+    function logout() {
+        $.post("/login/logout", null, function (bdata) {
+            if (bdata.status != "success") {
+                bootbox.alert("退出失败！")
+            } else {
+                window.location = "/login/index";
+            }
+        }, "json");
+    }
 
-%{--</script>--}%
+</script>
