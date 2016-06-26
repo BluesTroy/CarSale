@@ -18,7 +18,8 @@ class SystemStaffRoleController {
     }
 
     protected def search(params) {
-        if (!params.max) params.max = 2
+        def listMaxNum = SystemParameter.findByParameterName('listMaxNum')?.parameterValue?.toInteger()
+        if (!params.max) params.max = listMaxNum ?  listMaxNum:5
         if (!params.offset) params.offset = 0
         if (!params.order) params.order = 'desc'
         if (!params.sort) params.sort = 'dateCreated'
@@ -51,14 +52,6 @@ class SystemStaffRoleController {
 
     def edit() {
         def staffInfo = StaffInfo.get(params.id)
-
-        log.debug("---------------")
-        systemStaffRoleService.getStaffMenus(staffInfo).each {
-            log.debug(it.menuName)
-        }
-
-
-
         def systemStaffRoleList = SystemStaffRole.findAllByStaffInfo(staffInfo)
         def staffRoles = systemStaffRoleService.getStaffRoles(staffInfo)
         def staffNotRoles = systemStaffRoleService.getStaffNotRoles(staffInfo)

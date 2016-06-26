@@ -12,7 +12,7 @@
             </div>
 
             <div class="pull-left info">
-                <p>${session.staff.realName}</p>
+                <p>${session.staff?.realName}</p>
                 <!-- Status -->
                 <a href="#"><i class="fa fa-circle text-success"></i> 工作顺利</a>
             </div>
@@ -26,7 +26,7 @@
             <g:each in="${systemStaffRoleService.getStaffFirstMenus(session.staff)}">
 
 
-            <li class="active treeview">
+            <li class="treeview">
                 <a href="#">
                     <i class="fa ${it.menuIcon}"></i> <span>${it.menuName}</span> <i class="fa fa-angle-left pull-right"></i>
                 </a>

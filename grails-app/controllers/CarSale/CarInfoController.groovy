@@ -15,7 +15,8 @@ class CarInfoController {
     }
 
     protected def search(params) {
-        if (!params.max) params.max = 2
+        def listMaxNum = SystemParameter.findByParameterName('listMaxNum')?.parameterValue?.toInteger()
+        if (!params.max) params.max = listMaxNum ?  listMaxNum:5
         if (!params.offset) params.offset = 0
         if (!params.order) params.order = 'desc'
         if (!params.sort) params.sort = 'dateCreated'

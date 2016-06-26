@@ -63,7 +63,7 @@ class SystemMenuController {
         } else if (params.domainAction == 'create') {
             systemMenu = new SystemMenu(params)
             systemMenuService.save(systemMenu)
-            if(systemMenu.parentMenu.length()>0){
+            if(systemMenu?.parentMenu?.length()>0){
                 systemMenu.rootPath= systemMenu.parentMenu+","+systemMenu.id
             }else{
                 systemMenu.rootPath=systemMenu.id

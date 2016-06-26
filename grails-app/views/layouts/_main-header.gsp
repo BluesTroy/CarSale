@@ -50,7 +50,12 @@
                 %{--<li class="footer"><a href="#">查看所有消息</a></li>--}%
                 %{--</ul>--}%
                 %{--</li><!-- /.messages-menu -->--}%
-
+                <li>
+                <a href="/staffInfo/welcome" class="dropdown-toggle">
+                <!-- The user image in the navbar-->
+                <span class="hidden-xs">首页</span>
+                </a>
+            </li>
                 <!-- User Account Menu -->
                 <li class="dropdown user user-menu">
                     <!-- Menu Toggle Button -->

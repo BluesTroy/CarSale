@@ -26,13 +26,14 @@ class SystemStaffRoleService {
     def getStaffNotRoles(staffInfo) {
         def userRoles = getStaffRoles(staffInfo)
         def roles =SystemRole.list()
-        userRoles.each {
-            roles.each{ r->
-                if (r.id==it.id){
-                    roles.remove(r)
-                }
-            }
-        }
+//        userRoles.each {
+//            roles.each{ r->
+//                if (r.id==it.id){
+//                    roles.remove(r)
+//                }
+//            }
+//        }
+        roles.removeAll(userRoles)
         return roles
     }
 

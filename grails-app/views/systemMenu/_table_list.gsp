@@ -7,7 +7,6 @@
                 <th>菜单名</th>
                 <th>菜单级别</th>
                 <th>父菜单</th>
-                <th>排序值</th>
                 <th>菜单图标</th>
                 <th>菜单地址</th>
                 <th>操作</th>
@@ -29,7 +28,6 @@
                         <td>${CarSale.SystemMenu.get(it?.parentMenu)?.menuName}</td>
                     </g:else>
 
-                    <td>${it.menuSort}</td>
                     <td>${it.menuIcon}</td>
                     <td>${it.menuUrl}</td>
                     <td id="td_operate_${it.id}" width="100px">
