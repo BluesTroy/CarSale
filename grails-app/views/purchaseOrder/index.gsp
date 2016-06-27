@@ -129,7 +129,7 @@
         }, "html").done();
     }
 
-    function showSupplier(id) {
+    function showPurchaseOrder(id) {
         $.post("/purchaseOrder/edit", {id: id}, function (bdata) {
             $("#domainModalBody").html(bdata);
             // 所有输入表单控件只读显示

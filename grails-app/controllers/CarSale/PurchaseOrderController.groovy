@@ -60,9 +60,12 @@ class PurchaseOrderController {
         if (params.domainAction == 'edit') {
             purchaseOrder = PurchaseOrder.get(params.id)
             purchaseOrder.properties = params
+            purchaseOrder.totalPrice = purchaseOrder?.carNumber*purchaseOrder?.singlePrice
         } else if (params.domainAction == 'create') {
             purchaseOrder = new PurchaseOrder(params)
             purchaseOrder.orderCode = new Date().getTime().toString()
+            purchaseOrder.totalPrice = purchaseOrder?.carNumber*purchaseOrder?.singlePrice
+            purchaseOrder.storageStatus = false
         }
         if (!purchaseOrder.validate()) {
             haserror = true

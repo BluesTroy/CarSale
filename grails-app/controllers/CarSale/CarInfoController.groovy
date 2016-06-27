@@ -67,6 +67,7 @@ class CarInfoController {
         } else if (params.domainAction == 'create') {
             carInfo = new CarInfo(params)
             carInfo.carCode = new Date().getTime().toString()
+//            carInfo.inventory = 0
         }
         if (!carInfo.validate()) {
             haserror = true

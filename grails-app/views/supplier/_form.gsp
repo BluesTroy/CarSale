@@ -4,18 +4,12 @@
         <g:hiddenField id="domainAction" name="domainAction" value="${action}"/>
 
         <div class="row">
-
-            <div class="form-group col-md-3">
-                <label for="supplierCode">商户代码</label>
-                <g:if test="${action == 'edit'}">
+            <g:if test="${action == 'edit'}">
+                <div class="form-group col-md-3">
+                    <label for="supplierCode">商户代码</label>
                     <span id="supplierCode">${supplier?.supplierCode}</span>
-                </g:if>
-                <g:else>
-                    <input id="supplierCode" class="form-control" type="text" placeholder="必填项"
-                           name="supplierCode" value="${supplier?.supplierCode}">
-                </g:else>
-            </div>
-
+                </div>
+            </g:if>
             <div class="form-group col-md-3">
                 <label for="supplierName">商户名称</label>
                 <input id="supplierName" class="form-control" type="text" placeholder="必填项"
@@ -36,13 +30,13 @@
 
             <div class="form-group col-md-3">
                 <label for="zipcode">邮编</label>
-                <input id="zipcode" class="form-control" type="text" placeholder="必填项"
+                <input id="zipcode" class="form-control" type="text" placeholder="选填项"
                        name="zipcode" value="${supplier?.zipcode}">
             </div>
 
             <div class="form-group col-md-3">
                 <label for="description">商户描述</label>
-                <input id="description" class="form-control" type="text" placeholder="必填项"
+                <input id="description" class="form-control" type="text" placeholder="选填项"
                        name="description" value="${supplier?.description}">
             </div>
 
@@ -59,16 +53,16 @@
             </div>
 
             <div class="form-group col-md-3">
-                <label for="contactsTelephone">联系人姓名</label>
+                <label for="contactsTelephone">联系人电话</label>
                 <input id="contactsTelephone" class="form-control" type="text" placeholder="必填项"
                        name="contactsTelephone" value="${supplier?.contactsTelephone}">
             </div>
+
             <div class="form-group col-md-3">
-                <label for="contactsEmail">联系人姓名</label>
+                <label for="contactsEmail">联系人邮箱</label>
                 <input id="contactsEmail" class="form-control" type="text" placeholder="必填项"
                        name="contactsEmail" value="${supplier?.contactsEmail}">
             </div>
-
 
         </div>
     </g:form>

@@ -14,7 +14,7 @@
             <div class="form-group col-md-3">
                 <label for="sex">性别</label>
                 <g:radioGroup id="sex" name="sex" values="[true, false]" labels="['男','女']"
-                    value="${customer?.sex}">
+                    value="${customer?.sex ? customer?.sex:true}">
                   <span>${it.label} ${it.radio}</span>
                 </g:radioGroup>
             </div>
@@ -47,14 +47,16 @@
             </div>
             <div class="form-group col-md-3">
                 <label for="education">学历</label>
-                <input id="education" class="form-control" type="text" placeholder="选填项"
-                       name="education" value="${customer?.education}">
+                <g:select id="education" name="education" class="form-control"
+                          noSelection="['': '请选择...']"
+                          from="${['博士', '硕士', '本科', '本科以下']}"
+                          keys="[ '1', '2', '3', '4']"/>
             </div>
 
             <div class="form-group col-md-3">
                 <label for="isMember">会员</label>
                 <g:radioGroup id="isMember" name="isMember" values="[true, false]" labels="['是','否']"
-                              value="${customer?.isMember}">
+                              value="${customer?.isMember ? customer?.isMember: true}">
                     <span>${it.label} ${it.radio}</span>
                 </g:radioGroup>
             </div>

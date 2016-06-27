@@ -11,36 +11,42 @@
                 <input id="carBrand" class="form-control" type="text" placeholder="必填项"
                        name="carBrand" value="${carInfo?.carBrand}">
             </div>
+
             <div class="form-group col-md-3">
                 <label for="carType">型号</label>
                 <input id="carType" class="form-control" type="text" placeholder="必填项"
                        name="carType" value="${carInfo?.carType}">
             </div>
+
             <div class="form-group col-md-3">
                 <label for="carColor">颜色</label>
                 <input id="carColor" class="form-control" type="text" placeholder="必填项"
                        name="carColor" value="${carInfo?.carColor}">
             </div>
+
             <div class="form-group col-md-3">
                 <label for="fuelConsumption">平均油耗</label>
                 <input id="fuelConsumption" class="form-control" type="text" placeholder="必填项"
                        name="fuelConsumption" value="${carInfo?.fuelConsumption}">
             </div>
+
             <div class="form-group col-md-3">
                 <label for="price">售价</label>
                 <input id="price" class="form-control" type="text" placeholder="必填项"
                        name="price" value="${carInfo?.price}">
             </div>
-            <div class="form-group col-md-3">
-                <label for="inventory">库存数量</label>
-                <input id="inventory" class="form-control" type="text" placeholder="必填项"
-                       name="inventory" value="${carInfo?.inventory}">
-            </div>
-            <div class="form-group col-md-3">
-                <label for="warehouse">仓库</label>
-                <g:select id="warehouse" name="warehouse" class="form-control" from="${CarSale?.Warehouse?.list()}" noSelection="['':'请选择...']" optionKey="id"
-                          optionValue="warehouseName" />
-            </div>
+            <g:if test="${carInfo?.inventory != null}">
+                <div class="form-group col-md-3">
+                    <label for="inventory">库存数量</label>
+                    <span id="inventory">${carInfo?.inventory}</span>
+                </div>
+            </g:if>
+            <g:if test="${carInfo?.warehouse != null}">
+                <div class="form-group col-md-3">
+                    <label for="warehouse">仓库</label>
+                    <span id="warehouse">${carInfo?.warehouse?.warehouseName}</span>
+                </div>
+            </g:if>
         </div>
     </g:form>
 </div>

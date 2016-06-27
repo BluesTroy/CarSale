@@ -26,7 +26,7 @@ class CarInfo {
         carColor nullable: false, maxSize: 10
         fuelConsumption nullable: false, maxSize: 20
         price nullable: false, scale: 2
-        inventory nullable: false
+        inventory nullable: true
         memo nullable: true, maxSize: 100
 
     }

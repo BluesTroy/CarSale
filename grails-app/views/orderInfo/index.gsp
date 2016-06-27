@@ -31,7 +31,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="orderCode">员工编号</label>
+                                <label for="orderCode">订单编号</label>
                                 <input type="text" id="orderCode" name="orderCode"
                                        class="form-control input-md pull-right" style="width: 150px;"
                                        placeholder="模糊查询" value="${params?.orderCode}"/>

@@ -4,12 +4,13 @@
             <thead>
             <tr>
                 <th>订单编号</th>
-                <th>汽车编号</th>
+                <th>汽车品牌</th>
                 <th>进货单价</th>
                 <th>汽车数量</th>
                 <th>进货总价</th>
                 <th>订单时间</th>
                 <th>供应商</th>
+                <th>入库状态</th>
                 <th>创建时间</th>
                 <th>操作</th>
             </tr>
@@ -18,12 +19,13 @@
             <g:each in="${purchaseOrderList}">
                 <tr id="tr_${it.id}" onclick="showPurchaseOrder('${it.id}')" class="cursorPointer">
                     <td id="td_orderCode_${it.id}">${it.orderCode}</td>
-                    <td>${it.carInfo.carCode}</td>
-                    <td>${it.singPrice}</td>
+                    <td>${it.carInfo.carBrand}</td>
+                    <td>${it.singlePrice}</td>
                     <td>${it.carNumber}</td>
                     <td>${it.totalPrice}</td>
                     <td>${it.orderTime}</td>
                     <td>${it.supplier.supplierName}</td>
+                    <td><g:storageStatusToString key="${it.storageStatus}"/> </td>
                     <td id="td_dateCreated_${it.id}">${it.dateCreated}</td>
                     <td id="td_operate_${it.id}" width="100px">
                         <button class="btn btn-default btn-xs" type="button"

@@ -15,13 +15,13 @@
             <div class="form-group col-md-3">
                 <label for="orderTime">下单时间</label>
                 <g:datePicker id="orderTime" name="orderTime" class="form-control" value="${orderInfo.orderTime}"
-                              precision="minute"/>
+                              precision="day"/>
             </div>
 
             <div class="form-group col-md-3">
                 <label for="outTime">出库时间</label>
                 <g:datePicker id="outTime" name="outTime" class="form-control" value="${orderInfo.outTime}"
-                              precision="minute"/>
+                              precision="day"/>
             </div>
 
             <div class="form-group col-md-3">
@@ -46,13 +46,13 @@
             <div class="form-group col-md-3">
                 <label for="payTime">支付时间</label>
                 <g:datePicker id="payTime" name="payTime" class="form-control" value="${orderInfo.payTime}"
-                              precision="minute"/>
+                              precision="day"/>
             </div>
 
             <div class="form-group col-md-3">
                 <label for="finishTime">完成时间</label>
                 <g:datePicker id="finishTime" name="finishTime" class="form-control" value="${orderInfo.finishTime}"
-                              precision="minute"/>
+                              precision="day"/>
             </div>
 
             <div class="form-group col-md-3">
