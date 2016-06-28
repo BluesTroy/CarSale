@@ -13,59 +13,28 @@
                 </div>
             </g:if>
             <div class="form-group col-md-3">
-                <label for="orderTime">下单时间</label>
-                <g:datePicker id="orderTime" name="orderTime" class="form-control" value="${orderInfo.orderTime}"
-                              precision="day"/>
-            </div>
-
-            <div class="form-group col-md-3">
-                <label for="outTime">出库时间</label>
-                <g:datePicker id="outTime" name="outTime" class="form-control" value="${orderInfo.outTime}"
-                              precision="day"/>
-            </div>
-
-            <div class="form-group col-md-3">
-                <label for="saleNumber">销售总数</label>
-                <input id="saleNumber" class="form-control" type="text" placeholder="必填项"
-                       name="saleNumber" value="${orderInfo?.saleNumber}">
-            </div>
-
-            <div class="form-group col-md-3">
-                <label for="totalPrice">总价格</label>
-                <input id="totalPrice" class="form-control" type="text" placeholder="必填项"
-                       name="totalPrice" value="${orderInfo?.totalPrice}">
-            </div>
-
-            <div class="form-group col-md-3">
-                <label for="status">订单状态</label>
-                <g:select id="status" name="status" class="form-control"
-                          noSelection="['': '请选择...']" from="${['未付款', '已付款', '待出库', '已结单', '已退货', '已退款']}"
-                          keys="['1', '2', '3', '4', '5', '6']"/>
-            </div>
-
-            <div class="form-group col-md-3">
-                <label for="payTime">支付时间</label>
-                <g:datePicker id="payTime" name="payTime" class="form-control" value="${orderInfo.payTime}"
-                              precision="day"/>
-            </div>
-
-            <div class="form-group col-md-3">
-                <label for="finishTime">完成时间</label>
-                <g:datePicker id="finishTime" name="finishTime" class="form-control" value="${orderInfo.finishTime}"
-                              precision="day"/>
-            </div>
-
-            <div class="form-group col-md-3">
                 <label for="salesman">销售员</label>
                 <g:select id="salesman" name="salesman" class="form-control" from="${CarSale.Salesman.list()}"
-                          noSelection="['': '请选择...']" optionKey="id" optionValue="realName"/>
+                          noSelection="['': '请选择...']" optionKey="id" optionValue="realName" value="${orderInfo?.salesman?.id}"/>
             </div>
 
             <div class="form-group col-md-3">
                 <label for="customer">客户</label>
                 <g:select id="customer" name="customer" class="form-control" from="${CarSale.Customer.list()}"
-                          noSelection="['': '请选择...']" optionKey="id" optionValue="name"/>
+                          noSelection="['': '请选择...']" optionKey="id" optionValue="name" value="${orderInfo?.customer?.id}"/>
             </div>
+            <div class="form-group col-md-3">
+                <label for="saleNumber">销售总数</label>
+                <input id="saleNumber" class="form-control" type="text" placeholder="必填项"
+                       name="saleNumber" value="${orderInfo?.saleNumber}">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="orderTime">下单时间</label>
+                <g:datePicker id="orderTime" name="orderTime" class="form-control" value="${orderInfo.orderTime}"
+                              precision="day"/>
+            </div>
+
+
 
         </div>
     </g:form>

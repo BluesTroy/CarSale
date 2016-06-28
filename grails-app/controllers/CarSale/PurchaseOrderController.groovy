@@ -83,6 +83,19 @@ class PurchaseOrderController {
 
     }
 
+    def saveInWarehouse(){
+        log.debug("test................")
+        log.error(params)
+        purchaseOrderService.saveInWarehouse(params)
+
+        render(contentType: "application/json", encoding: "UTF-8") {
+            def result = ["status" : "success",
+                          "message": "入库成功"]
+            render result as JSON
+
+        }
+    }
+
     def delete() {
         def purchaseOrder = PurchaseOrder.get(params.id)
         purchaseOrder.delete(flush: true)

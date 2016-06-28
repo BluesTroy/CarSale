@@ -1,3 +1,4 @@
+<%@ page import="CarSale.Warehouse" %>
 <%--
   Created by IntelliJ IDEA.
   User: Troy
@@ -106,6 +107,39 @@
 </div><!-- /.content-wrapper -->
 <!-- REQUIRED JS SCRIPTS -->
 
+<div class="modal fade" id="saveInWarehouseModal" tabindex="-1" role="dialog" aria-labelledby="codeRangeModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="关闭"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">保存到仓库</h4>
+            </div>
+
+            <div class="modal-body">
+                <form id="saveInWarehouseForm" url="[controller: 'purchaseOrder', action: 'saveInWarehouse']">
+                    <input type="hidden" name="purchaseOrderId" id="purchaseOrderId" value=""/>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label for="warehouse">选择仓库</label>
+                        </div>
+                        <div class="col-md-6">
+                            <g:select class="form-control" from="${CarSale.Warehouse.list()}" name="warehouse" optionKey="id" optionValue="warehouseName"
+                                noSelection="['':'请选择...']" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="javascript:saveInfWarehouse();">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- page script -->
 <script>
     $(document).ready(function () {
@@ -151,9 +185,31 @@
 
     function editSupplier() {
         $("#purchaseOrderForm input:not(:button,:hidden)").prop("readonly", false);
+        $("#purchaseOrderForm select").prop("disabled", false);
         $("#delButton").attr("disabled", false);
         $("#saveButton").attr("disabled", false);
     }
+
+    function startSaveInWarehouse(id){
+        $("#saveInWarehouseModal").modal("show");
+        $("#purchaseOrderId").val(id);
+    }
+    function saveInfWarehouse(){
+        $.post("/purchaseOrder/saveInWarehouse", $("#saveInWarehouseForm").serializeArray(), function (bdata) {
+            $("#saveInWarehouseModal").modal("hide");
+            if (bdata.status != "success") {
+                bootbox.alert(bdata.message);
+            } else {
+                bootbox.alert("入库成功");
+                loadPage();
+                $("#domainModalBody").html("...");
+                $("#delButton").attr("disabled", true);
+                $("#saveButton").attr("disabled", true);
+                $("#editButton").attr("disabled", true);
+            }
+        }, "json");
+    }
+
 
     function deleteSupplier(){
         delSupplier($("#id").val());
@@ -174,10 +230,6 @@
                             } else {
                                 $("#offset").val('0');
                                 loadPage();
-                                /*$("#tr_" + id).remove();
-                                var total = parseInt($("#domainTotalCount").html()) - 1;
-                                total = total <= 0 ? 0 : total;
-                                $("#domainTotalCount").html(total);*/
                                 if ($("#id") != null && $("#id").val() == id) {
                                     $("#domainModalBody").html("...");
                                     $("#delButton").attr("disabled", true);

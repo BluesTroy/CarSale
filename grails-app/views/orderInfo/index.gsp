@@ -151,6 +151,7 @@
 
     function editOrderInfo() {
         $("#orderInfoForm input:not(:button,:hidden)").prop("readonly", false);
+        $("#orderInfoForm select").prop("disabled", false);
         $("#delButton").attr("disabled", false);
         $("#saveButton").attr("disabled", false);
     }
@@ -205,6 +206,26 @@
                 $("#editButton").attr("disabled", true);
             }
         }, "json");
+    }
+
+    function outWarehouse(id){
+        bootbox.confirm("确定要出库吗？", function (isOk) {
+           if(isOk){
+               $.post("/orderInfo/outWarehouse", {id:id}, function (bdata) {
+                   if (bdata.status != "success") {
+                       bootbox.alert(bdata.message);
+                   } else {
+                       bootbox.alert("出库成功");
+                       loadPage();
+                       $("#domainModalBody").html("...");
+                       $("#delButton").attr("disabled", true);
+                       $("#saveButton").attr("disabled", true);
+                       $("#editButton").attr("disabled", true);
+                   }
+               }, "json");
+           }
+        });
+
     }
 
     function setSort(name, dispayName) {

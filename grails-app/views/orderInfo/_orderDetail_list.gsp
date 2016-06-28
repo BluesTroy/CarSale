@@ -1,4 +1,4 @@
-<%@ page import="CarSale.CarInfo" %>
+<%@ page import="java.text.DecimalFormat; CarSale.CarInfo" %>
 <div class="box">
     <div class="box-body table-responsive no-padding">
         <table id="orderInfoTable" class="table table-hover table-bordered table-striped table-condensed">
@@ -7,19 +7,22 @@
                 <th>汽车编号</th>
                 <th>汽车品牌</th>
                 <th>订货数量</th>
-                <th>单价</th>
-                <th>总价</th>
+                <th>单价（万元）</th>
+                <th>总价（万元）</th>
                 <th>操作</th>
             </tr>
             </thead>
+            <%
+                def df = new DecimalFormat("0.00")
+            %>
             <tbody id="domainTableTbody">
             <g:each in="${orderInfo?.orderDetails}">
                 <tr id="tr_${it.id}">
                     <td>${it.carInfo.carCode}</td>
                     <td>${it.carInfo.carBrand}</td>
                     <td>${it.number}</td>
-                    <td>${it.singlePrice}</td>
-                    <td>${it.totalPrice}</td>
+                    <td>${df.format(it.singlePrice)}</td>
+                    <td>${df.format(it.totalPrice)}</td>
                     <td id="td_operate_${it.id}" width="100px">
                         <i class="fa fa-trash" style="cursor: pointer" title="删除"
                                 onclick="delOrderDetail('${it.id}')"> </i>
@@ -53,9 +56,9 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            汽车编号
-                            <g:select id="carInfo" name="carInfo" from="${CarSale.CarInfo.list()}"
-                                noSelection="['':'请选择...']" optionKey="id" optionValue="carCode" />
+                            汽车品牌
+                            <g:select id="carInfo" name="carInfo" from="${CarSale.CarInfo.findAllByInventoryGreaterThan(0)}"
+                                noSelection="['':'请选择...']" optionKey="id" optionValue="carBrand" />
                         </div>
 
                         <div class="col-md-6">

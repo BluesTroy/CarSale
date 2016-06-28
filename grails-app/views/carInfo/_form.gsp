@@ -31,16 +31,14 @@
             </div>
 
             <div class="form-group col-md-3">
-                <label for="price">售价</label>
+                <label for="price">售价（万元）</label>
                 <input id="price" class="form-control" type="text" placeholder="必填项"
                        name="price" value="${carInfo?.price}">
             </div>
-            <g:if test="${carInfo?.inventory != null}">
                 <div class="form-group col-md-3">
                     <label for="inventory">库存数量</label>
-                    <span id="inventory">${carInfo?.inventory}</span>
+                    <span id="inventory">${carInfo?.inventory? carInfo?.inventory:0}</span>
                 </div>
-            </g:if>
             <g:if test="${carInfo?.warehouse != null}">
                 <div class="form-group col-md-3">
                     <label for="warehouse">仓库</label>

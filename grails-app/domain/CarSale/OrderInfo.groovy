@@ -13,9 +13,9 @@ class OrderInfo {
     Date outTime
     Integer saleNumber
     Double totalPrice
-    short status
-    Date payTime
-    Date finishTime
+//    short status
+//    Date payTime
+//    Date finishTime
     Salesman salesman
     Customer customer
     String memo
@@ -27,10 +27,10 @@ class OrderInfo {
         orderTime nullable: true
         outTime nullable: true
         saleNumber nullable: false
-        totalPrice nullable: false
-        status nullable: false
-        payTime nullable: true
-        finishTime nullable: true
+        totalPrice nullable: true, scale: 2
+//        status nullable: false
+//        payTime nullable: true
+//        finishTime nullable: true
         memo nullable: true, maxSize: 100
 
     }

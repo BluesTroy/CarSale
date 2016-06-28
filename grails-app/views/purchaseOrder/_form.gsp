@@ -43,21 +43,27 @@
                 <g:datePicker id="orderTime" name="orderTime" class="form-control" value="${purchaseOrder.orderTime}"
                               precision="day"/>
             </div>
-            %{--
-                        <div class="form-group col-md-3">
-                            <label for="storageStatus">入库状态</label>
-                            <g:radioGroup id="storageStatus" name="storageStatus" values="[true, false]" labels="['是', '否']"
-                                          value="${purchaseOrder?.storageStatus}">
-                                <span>${it.label} ${it.radio}</span>
-                            </g:radioGroup>
-                        </div>
+            <g:if test="${purchaseOrder?.storageStatus == true}">
+                <div class="form-group col-md-3">
+                    <label>已入仓库:</label>
+                    <span>${purchaseOrder?.carInfo?.warehouse?.warehouseName}</span>
+                </div>
+            </g:if>
+        %{--
+                    <div class="form-group col-md-3">
+                        <label for="storageStatus">入库状态</label>
+                        <g:radioGroup id="storageStatus" name="storageStatus" values="[true, false]" labels="['是', '否']"
+                                      value="${purchaseOrder?.storageStatus}">
+                            <span>${it.label} ${it.radio}</span>
+                        </g:radioGroup>
+                    </div>
 
-                        <div class="form-group col-md-3">
-                            <label for="storageTime">入库时间</label>
-                            <g:datePicker id="storageTime" name="storageTime" class="form-control"
-                                          value="${purchaseOrder.storageTime}"
-                                          precision="day"/>
-                        </div>--}%
+                    <div class="form-group col-md-3">
+                        <label for="storageTime">入库时间</label>
+                        <g:datePicker id="storageTime" name="storageTime" class="form-control"
+                                      value="${purchaseOrder.storageTime}"
+                                      precision="day"/>
+                    </div>--}%
 
         </div>
     </g:form>

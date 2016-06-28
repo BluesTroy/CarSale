@@ -22,6 +22,7 @@
     <script type="text/javascript" src="/common/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
 
     <script type="text/javascript" src="/common/js/bootbox-4.4.0.min.js"></script>
+    <script type="text/javascript" src="/common/chartjs/Chart.min.js"></script>
 
 
 

@@ -1,3 +1,4 @@
+<%@ page import="java.text.DecimalFormat" %>
 <div class="box box-primary">
     <div class="box-body table-responsive no-padding">
         <table id="carInfoTable" class="table table-hover table-bordered table-striped table-condensed">
@@ -8,11 +9,14 @@
                 <th>型号</th>
                 <th>颜色</th>
                 <th>平均油耗</th>
-                <th>售价</th>
+                <th>售价（万元）</th>
                 <th>创建时间</th>
                 <th>操作</th>
             </tr>
             </thead>
+            <%
+                def df = new java.text.DecimalFormat("0.00")
+            %>
             <tbody id="domainTableTbody">
             <g:each in="${carInfoList}">
                 <tr id="tr_${it.id}" onclick="showCarInfo('${it.id}')" class="cursorPointer">
@@ -21,7 +25,7 @@
                     <td>${it.carType}</td>
                     <td>${it.carColor}</td>
                     <td>${it.fuelConsumption}</td>
-                    <td>${it.price}</td>
+                    <td>${df.format(it.price)}</td>
                     <td id="td_dateCreated_${it.id}">${it.dateCreated}</td>
                     <td id="td_operate_${it.id}" width="100px">
                         <button class="btn btn-default btn-xs" type="button"

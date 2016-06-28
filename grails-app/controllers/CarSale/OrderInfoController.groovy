@@ -80,6 +80,18 @@ class OrderInfoController {
 
     }
 
+    def outWarehouse(){
+        def orderInfo= OrderInfo.get(params.id)
+
+        orderInfoService.outWarehouse(orderInfo)
+        render(contentType: "application/json", encoding: "UTF-8") {
+            def result = ["status" :  "success",
+                          "message": '操作成功']
+            render result as JSON
+
+        }
+    }
+
     def saveOrderDetail() {
         def haserror = false
         def message = new StringBuffer()
