@@ -5,6 +5,7 @@ class MenuInterceptor {
 
     MenuInterceptor(){
         match(controller:'*',action: 'index')
+        match(controller:'saleStatistic',action:'*')
     }
 
 

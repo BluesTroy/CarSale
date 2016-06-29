@@ -11,13 +11,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            汽车销售统计
+            汽车月销售额统计
             %{--<small>汽车基本信息</small>--}%
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-home"></i> 主页</a></li>
-            <li><g:link controller="finance" action="saleCarStatistic">财务管理</g:link></li>
-            <li class="active">汽车销售统计</li>
+            <li><g:link controller="saleStatistic" action="saleMonthStatistic">财务管理</g:link></li>
+            <li class="active">汽车月销售额统计</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -25,10 +25,10 @@
         %{--<h2></h2>--}%
 
         <div class="row">
-            <div class="col-md-12">
-                <div class="box box-success text-center" style="width: 90%;height: 50%;margin: 0px auto;">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="box box-success text-center">
                     <div class="box-header with-border">
-                        <h3 class="box-title">不同汽车品牌销售数量统计</h3>
+                        <h3 class="box-title">不同月份销售额统计</h3>
 
                         <div class="box-tools pull-right">
                             <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
@@ -37,7 +37,7 @@
 
                     <div class="box-body">
                         <div class="chart">
-                            <canvas id="barChart" style="height:230px;color: #25951b;;"></canvas>
+                            <canvas id="barChart" ></canvas>
                         </div>
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
@@ -52,35 +52,50 @@
 <script>
 
     $(function () {
-        $.post("/finance/getSaleData",null, function (bdata) {
+        $.post("/saleStatistic/getMonthData",null, function (bdata) {
             var ctx = $("#barChart").get(0).getContext("2d");
             var data = {
-                labels: bdata.labelList,
+                labels: ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],
                 datasets: [
                     {
-                        label: "进货数量",
+                        label: "销售额（万元）",
+                        fill: false,
+                        lineTension: 0.1,
+                        backgroundColor: "rgba(37,149,27,0.4)",
+                        borderColor: "rgba(37,149,27,1)",
+                        borderCapStyle: 'butt',
+                        borderDash: [],
+                        borderDashOffset: 0.0,
+                        borderJoinStyle: 'miter',
+                        pointBorderColor: "rgba(37,149,27,1)",
+                        pointBackgroundColor: "#fff",
+                        pointBorderWidth: 1,
+                        pointHoverRadius: 5,
+                        pointHoverBackgroundColor: "rgba(37,149,27,1)",
+                        pointHoverBorderColor: "rgba(220,220,220,1)",
+                        pointHoverBorderWidth: 2,
+                        pointRadius: 1,
+                        pointHitRadius: 10,
+                        data: bdata.dataList,
+                    }
+                ]
+                /*datasets: [
+                    {
+                        label: "销售额（万元）",
                         backgroundColor: "rgba(37,149,27,0.2)",
                         borderColor: "rgba(37,149,27,1)",
                         borderWidth: 1,
                         hoverBackgroundColor: "rgba(37,149,27,0.4)",
                         hoverBorderColor: "rgba(37,149,27,1)",
-                        data: bdata.valueList,
+                        data: bdata.priceList,
                     }
-                ]
+                ]*/
             };
 
             new Chart(ctx, {
-                type: "bar",
+                type: "line",
                 data: data,
                 options: {
-                    scales: {
-                        xAxes: [{
-                            stacked: true
-                        }],
-                        yAxes: [{
-                            stacked: true
-                        }]
-                    }
                 }
             });
         });

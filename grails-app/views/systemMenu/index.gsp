@@ -150,6 +150,7 @@
 
     function editSystemMenu() {
         $("#systemMenuForm input:not(:button,:hidden)").prop("readonly", false);
+        $("#systemMenuForm select").prop("disabled", false);
         $("#delButton").attr("disabled", false);
         $("#saveButton").attr("disabled", false);
     }
