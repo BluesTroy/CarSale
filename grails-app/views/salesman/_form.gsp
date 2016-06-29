@@ -21,18 +21,7 @@
                 <input id="realName" class="form-control" type="text" placeholder="必填项"
                        name="realName" value="${salesman?.realName}">
             </div>
-            <div class="form-group col-md-3">
-                <label for="sex">性别</label>
-                <g:radioGroup id="sex" name="sex" values="[true, false]" labels="['男','女']"
-                    value="${salesman?.sex ? salesman?.sex:true}">
-                  <span>${it.label} ${it.radio}</span>
-                </g:radioGroup>
-            </div>
-            <div class="form-group col-md-3">
-                <label for="birthday">出生年月</label>
-                <g:datePicker id="birthday" name="birthday" class="form-control" value="${salesman.birthday}"
-                    precision="day" />
-            </div>
+
             <div class="form-group col-md-3">
                 <label for="telephone">手机</label>
                 <input id="telephone" class="form-control" type="text" placeholder="必填项"
@@ -47,6 +36,18 @@
                 <label for="email">工作邮箱</label>
                 <input id="email" class="form-control" type="email" placeholder="123@163.com"
                        name="email" value="${salesman?.email}">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="sex">性别</label>
+                <g:radioGroup id="sex" name="sex" values="[true, false]" labels="['男','女']"
+                              value="${salesman?.sex ? salesman?.sex:true}">
+                    <span>${it.label} ${it.radio}</span>
+                </g:radioGroup>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="birthday">出生年月</label>
+                <g:datePicker id="birthday" name="birthday" class="form-control" value="${salesman.birthday}"
+                              precision="day" />
             </div>
         </div>
     </g:form>

@@ -11,13 +11,7 @@
                        name="name" value="${customer?.name}">
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="sex">性别</label>
-                <g:radioGroup id="sex" name="sex" values="[true, false]" labels="['男','女']"
-                    value="${customer?.sex ? customer?.sex:true}">
-                  <span>${it.label} ${it.radio}</span>
-                </g:radioGroup>
-            </div>
+
 
             <div class="form-group col-md-3">
                 <label for="identityCard">身份证号</label>
@@ -25,11 +19,7 @@
                        name="identityCard" value="${customer?.identityCard}">
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="birthday">出生年月</label>
-                <g:datePicker id="birthday" name="birthday" class="form-control" value="${customer.birthday}"
-                    precision="day" />
-            </div>
+
             <div class="form-group col-md-3">
                 <label for="telephone">手机</label>
                 <input id="telephone" class="form-control" type="text" placeholder="必填项"
@@ -48,11 +38,25 @@
             <div class="form-group col-md-3">
                 <label for="education">学历</label>
                 <g:select id="education" name="education" class="form-control"
-                          noSelection="['': '请选择...']"
+                          noSelection="['': '请选择...']" value="${customer?.education}"
                           from="${['博士', '硕士', '本科', '本科以下']}"
                           keys="[ '1', '2', '3', '4']"/>
             </div>
 
+
+            <div class="form-group col-md-3">
+                <label for="sex">性别</label>
+                <g:radioGroup id="sex" name="sex" values="[true, false]" labels="['男','女']"
+                              value="${customer?.sex ? customer?.sex:true}">
+                    <span>${it.label} ${it.radio}</span>
+                </g:radioGroup>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="birthday">出生年月</label>
+                <g:datePicker id="birthday" name="birthday" class="form-control" value="${customer.birthday}"
+                              precision="day" />
+            </div>
             <div class="form-group col-md-3">
                 <label for="isMember">会员</label>
                 <g:radioGroup id="isMember" name="isMember" values="[true, false]" labels="['是','否']"

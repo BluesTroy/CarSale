@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="col-md-1">
-                            <button type="button" class="btn btn-danger"
+                            <button type="button" class="btn btn-primary"
                                     onclick="javascript:resetPage();">重置</button>
                         </div>
 
@@ -159,6 +159,7 @@
 
     function editSalesman() {
         $("#salesmanForm input:not(:button,:hidden)").prop("readonly", false);
+        $("#salesmanForm select").prop("disabled", false);
         $("#delButton").attr("disabled", false);
         $("#saveButton").attr("disabled", false);
     }
