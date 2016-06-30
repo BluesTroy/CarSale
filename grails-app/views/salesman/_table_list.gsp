@@ -18,7 +18,7 @@
                 <tr id="tr_${it.id}" onclick="showSalesman('${it.id}')" class="cursorPointer">
                     <td id="td_staffCode_${it.id}">${it.staffCode}</td>
                     <td>${it.realName}</td>
-                    <td><g:sexToString key="${it.sex}"/></td>
+                    <td><g:if test="${it.sex}">男</g:if><g:else>女</g:else> </td>
                     <td>${it.telephone}</td>
                     <td>${it.phone}</td>
                     <td>${it.email}</td>

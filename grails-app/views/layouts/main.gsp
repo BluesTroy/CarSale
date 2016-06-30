@@ -19,18 +19,18 @@
     %{--js--}%
 
     <script type="text/javascript" src="/common/js/jQuery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="/common/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
     <script type="text/javascript" src="/common/adminlte-2.3.0/js/app.js"></script>
-    <script type="text/javascript" src="/common/js/application.js"/>
+    <script type="text/javascript" src="/common/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
 
     <script type="text/javascript" src="/common/js/bootbox-4.4.0.min.js"></script>
     <script type="text/javascript" src="/common/chartjs/Chart.min.js"></script>
+    <script type="text/javascript" src="/common/js/application.js"/>
 
 
 
 
 
-    %{--<asset:javascript src="application.js"/>--}%
+    <asset:javascript src="application.js"/>
 
     <g:layoutHead/>
 </head>

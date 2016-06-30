@@ -44,7 +44,7 @@
                         </div>
 
                         <div class="col-md-1">
-                            <button type="button" class="btn btn-danger"
+                            <button type="button" class="btn btn-primary"
                                     onclick="javascript:resetPage();">重置</button>
                         </div>
 

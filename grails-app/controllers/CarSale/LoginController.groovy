@@ -23,6 +23,7 @@ class LoginController {
 
     def logout(){
         session.staff = null
+        session.menuUrl=null
         render(contentType: "application/json") {
             def result = ["status": "success"]
             render result as JSON

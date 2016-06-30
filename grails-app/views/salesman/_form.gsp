@@ -40,7 +40,7 @@
             <div class="form-group col-md-3">
                 <label for="sex">性别</label>
                 <g:radioGroup id="sex" name="sex" values="[true, false]" labels="['男','女']"
-                              value="${salesman?.sex ? salesman?.sex:true}">
+                              value="${(salesman?.sex!=null) ? salesman?.sex:true}">
                     <span>${it.label} ${it.radio}</span>
                 </g:radioGroup>
             </div>

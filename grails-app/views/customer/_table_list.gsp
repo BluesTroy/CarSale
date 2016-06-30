@@ -16,10 +16,10 @@
             <g:each in="${customerList}">
                 <tr id="tr_${it.id}" onclick="showCustomer('${it.id}')" class="cursorPointer">
                     <td id="td_name_${it.id}">${it.name}</td>
-                    <td><g:customerSexToString key="${it.sex}"/></td>
+                    <td><g:if test="${it.sex}">男</g:if><g:else>女</g:else></td>
                     <td>${it.telephone}</td>
                     <td>${it.email}</td>
-                    <td><g:memberToString key="${it.isMember}"/> </td>
+                    <td><g:if test="${it.isMember}">是</g:if><g:else>否</g:else></td>
                     <td id="td_dateCreated_${it.id}">${it.dateCreated}</td>
                     <td id="td_operate_${it.id}" width="100px">
                         <button class="btn btn-default btn-xs" type="button"

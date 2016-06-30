@@ -29,7 +29,7 @@
                     <td>${df.format(it.totalPrice)}</td>
                     <td><g:formatDate date="${it.orderTime}" formatName="default.date.format.date" /></td>
                     <td>${it.supplier.supplierName}</td>
-                    <td><g:storageStatusToString key="${it.storageStatus}"/> </td>
+                    <td><g:if test="${it.storageStatus}">已入库</g:if><g:else>未入库</g:else></td>
                     <td id="td_dateCreated_${it.id}"><g:formatDate date="${it.dateCreated}" formatName="default.date.format.datetime"/> </td>
                     <td id="td_operate_${it.id}" width="80px">
                         <g:if test="${it.storageStatus!=true}">
@@ -37,7 +37,7 @@
                                 onclick="startSaveInWarehouse('${it.id}')">入库</button>
                         </g:if>
                         <g:else>
-                            <span>已入库</span>
+                            <span>入库完成</span>
                         </g:else>
                     </td>
                 </tr>

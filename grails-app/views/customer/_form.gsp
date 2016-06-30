@@ -47,7 +47,7 @@
             <div class="form-group col-md-3">
                 <label for="sex">性别</label>
                 <g:radioGroup id="sex" name="sex" values="[true, false]" labels="['男','女']"
-                              value="${customer?.sex ? customer?.sex:true}">
+                              value="${(customer?.sex!=null) ? customer?.sex:true}">
                     <span>${it.label} ${it.radio}</span>
                 </g:radioGroup>
             </div>
@@ -60,7 +60,7 @@
             <div class="form-group col-md-3">
                 <label for="isMember">会员</label>
                 <g:radioGroup id="isMember" name="isMember" values="[true, false]" labels="['是','否']"
-                              value="${customer?.isMember ? customer?.isMember: true}">
+                              value="${(customer?.isMember!=null) ? customer?.isMember: true}">
                     <span>${it.label} ${it.radio}</span>
                 </g:radioGroup>
             </div>
