@@ -3,12 +3,24 @@
         <table id="customerTable" class="table table-hover table-bordered table-striped table-condensed">
             <thead>
             <tr>
-                <th>姓名</th>
-                <th>性别</th>
-                <th>手机</th>
-                <th>邮箱</th>
-                <th>会员？</th>
-                <th>创建时间</th>
+                <th class="cursorPointer" onclick="javascript:setSort('name');">
+                    <g:if test="${params?.sort == 'name'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>姓名</th>
+                <th class="cursorPointer" onclick="javascript:setSort('sex');">
+                    <g:if test="${params?.sort == 'sex'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>性别</th>
+                <th class="cursorPointer" onclick="javascript:setSort('telephone');">
+                    <g:if test="${params?.sort == 'telephone'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>手机</th>
+                <th class="cursorPointer" onclick="javascript:setSort('email');">
+                    <g:if test="${params?.sort == 'email'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>邮箱</th>
+                <th class="cursorPointer" onclick="javascript:setSort('isMember');">
+                    <g:if test="${params?.sort == 'isMember'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>会员？</th>
+                <th class="cursorPointer" onclick="javascript:setSort('dateCreated');">
+                    <g:if test="${params?.sort == 'dateCreated'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>创建时间</th>
                 <th>操作</th>
             </tr>
             </thead>

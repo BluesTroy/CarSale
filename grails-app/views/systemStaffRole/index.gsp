@@ -157,7 +157,7 @@
 
     }
 
-    function setSort(name, dispayName) {
+    function setSort(name) {
         $("#sort").val(name);
         if ($("#order").val() == "asc") {
             $("#order").val("desc");

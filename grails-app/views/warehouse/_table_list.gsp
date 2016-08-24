@@ -3,12 +3,24 @@
         <table id="warehouseTable" class="table table-hover table-bordered table-striped table-condensed">
             <thead>
             <tr>
-                <th>仓库编码</th>
-                <th>仓库名</th>
-                <th>仓库地址</th>
-                <th>最大库存</th>
-                <th>现存量</th>
-                <th>创建时间</th>
+                <th class="cursorPointer" onclick="javascript:setSort('warehouseCode');">
+                    <g:if test="${params?.sort == 'warehouseCode'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>仓库编码</th>
+                <th class="cursorPointer" onclick="javascript:setSort('warehouseName');">
+                    <g:if test="${params?.sort == 'warehouseName'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>仓库名</th>
+                <th class="cursorPointer" onclick="javascript:setSort('warehouseAddress');">
+                    <g:if test="${params?.sort == 'warehouseAddress'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>仓库地址</th>
+                <th class="cursorPointer" onclick="javascript:setSort('maxInventory');">
+                    <g:if test="${params?.sort == 'maxInventory'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>最大库存</th>
+                <th class="cursorPointer" onclick="javascript:setSort('nowInventory');">
+                    <g:if test="${params?.sort == 'nowInventory'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>现存量</th>
+                <th class="cursorPointer" onclick="javascript:setSort('dateCreated');">
+                    <g:if test="${params?.sort == 'dateCreated'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>创建时间</th>
                 <th>操作</th>
             </tr>
             </thead>

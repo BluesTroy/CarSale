@@ -3,10 +3,18 @@
         <table id="systemParameterTable" class="table table-hover table-bordered table-striped table-condensed">
             <thead>
             <tr>
-                <th>参数名</th>
-                <th>参数值</th>
-                <th>参数描述</th>
-                <th>创建时间</th>
+                <th class="cursorPointer" onclick="javascript:setSort('parameterName');">
+                    <g:if test="${params?.sort == 'parameterName'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>参数名</th>
+                <th class="cursorPointer" onclick="javascript:setSort('parameterValue');">
+                    <g:if test="${params?.sort == 'parameterValue'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>参数值</th>
+                <th class="cursorPointer" onclick="javascript:setSort('description');">
+                    <g:if test="${params?.sort == 'description'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>参数描述</th>
+                <th class="cursorPointer" onclick="javascript:setSort('dateCreated');">
+                    <g:if test="${params?.sort == 'dateCreated'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>创建时间</th>
                 <th>操作</th>
             </tr>
             </thead>

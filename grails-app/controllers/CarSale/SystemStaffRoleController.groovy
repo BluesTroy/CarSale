@@ -68,7 +68,7 @@ class SystemStaffRoleController {
         def systemStaffRole
         log.error(params)
         systemStaffRole = new SystemStaffRole(params)
-        systemStaffRole.staffInfo = get(params.staffInfoId)
+        systemStaffRole.staffInfo = StaffInfo.get(params.staffInfoId)
         systemStaffRole.systemRole = SystemRole.get(params.systemRoleId)
         if (!systemStaffRole.validate()) {
             haserror = true

@@ -4,13 +4,27 @@
         <table id="orderInfoTable" class="table table-hover table-bordered table-striped table-condensed">
             <thead>
             <tr>
-                <th>订单编号</th>
-                <th>下单时间</th>
-                <th>出库时间</th>
-                <th>销售总数</th>
-                <th>总价格（万元）</th>
-                <th>销售员</th>
-                <th>客户</th>
+                <th  class="cursorPointer" onclick="javascript:setSort('orderCode');">
+                    <g:if test="${params?.sort == 'orderCode'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>订单编号</th>
+                <th class="cursorPointer" onclick="javascript:setSort('orderTime');">
+                    <g:if test="${params?.sort == 'orderTime'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>下单时间</th>
+                <th class="cursorPointer" onclick="javascript:setSort('outTime');">
+                    <g:if test="${params?.sort == 'outTime'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>出库时间</th>
+                <th class="cursorPointer" onclick="javascript:setSort('saleNumber');">
+                    <g:if test="${params?.sort == 'saleNumber'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>销售总数</th>
+                <th class="cursorPointer" onclick="javascript:setSort('totalPrice');">
+                    <g:if test="${params?.sort == 'totalPrice'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>总价格（万元）</th>
+                <th class="cursorPointer" onclick="javascript:setSort('salesman');">
+                    <g:if test="${params?.sort == 'salesman'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>销售员</th>
+                <th class="cursorPointer" onclick="javascript:setSort('customer');">
+                    <g:if test="${params?.sort == 'customer'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>客户</th>
                 <th>操作</th>
             </tr>
             </thead>

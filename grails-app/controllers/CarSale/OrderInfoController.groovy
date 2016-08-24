@@ -19,7 +19,7 @@ class OrderInfoController {
         if (!params.max) params.max = listMaxNum ?  listMaxNum:5
         if (!params.offset) params.offset = 0
         if (!params.order) params.order = 'desc'
-        if (!params.sort) params.sort = 'dateCreated'
+        if (!params.sort) params.sort = 'orderTime'
 
         def searchClosure = {
             if (params.orderCode) {

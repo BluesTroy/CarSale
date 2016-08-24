@@ -3,14 +3,29 @@
     <div class="box-body table-responsive no-padding">
         <table id="carInfoTable" class="table table-hover table-bordered table-striped table-condensed">
             <thead>
+
             <tr>
-                <th>汽车编号</th>
-                <th>品牌</th>
-                <th>型号</th>
-                <th>颜色</th>
-                <th>平均油耗</th>
-                <th>售价（万元）</th>
-                <th>创建时间</th>
+                <th class="cursorPointer" onclick="javascript:setSort('carCode');">
+                    <g:if test="${params?.sort == 'carCode'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>汽车编号</th>
+                <th class="cursorPointer" onclick="javascript:setSort('carBrand');">
+                    <g:if test="${params?.sort == 'carBrand'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>品牌</th>
+                <th class="cursorPointer" onclick="javascript:setSort('carType');">
+                    <g:if test="${params?.sort == 'carType'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>型号</th>
+                <th class="cursorPointer" onclick="javascript:setSort('carColor');">
+                    <g:if test="${params?.sort == 'carColor'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>颜色</th>
+                <th class="cursorPointer" onclick="javascript:setSort('fuelConsumption');">
+                    <g:if test="${params?.sort == 'fuelConsumption'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>平均油耗</th>
+                <th class="cursorPointer" onclick="javascript:setSort('price');">
+                    <g:if test="${params?.sort == 'price'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>售价（万元）</th>
+                <th class="cursorPointer" onclick="javascript:setSort('dateCreated');">
+                    <g:if test="${params?.sort == 'dateCreated'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>创建时间</th>
                 <th>操作</th>
             </tr>
             </thead>

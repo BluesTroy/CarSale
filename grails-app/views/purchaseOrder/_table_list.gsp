@@ -4,15 +4,31 @@
         <table id="purchaseOrderTable" class="table table-hover table-bordered table-striped table-condensed">
             <thead>
             <tr>
-                <th>订单编号</th>
+                <th class="cursorPointer" onclick="javascript:setSort('orderCode');">
+                    <g:if test="${params?.sort == 'orderCode'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>订单编号</th>
                 <th>汽车品牌</th>
-                <th>进货单价（万）</th>
-                <th>汽车数量</th>
-                <th>进货总价（万）</th>
-                <th>订单时间</th>
-                <th>供应商</th>
-                <th>入库状态</th>
-                <th>创建时间</th>
+                <th class="cursorPointer" onclick="javascript:setSort('singlePrice');">
+                    <g:if test="${params?.sort == 'singlePrice'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>进货单价（万）</th>
+                <th class="cursorPointer" onclick="javascript:setSort('carNumber');">
+                    <g:if test="${params?.sort == 'carNumber'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>汽车数量</th>
+                <th class="cursorPointer" onclick="javascript:setSort('totalPrice');">
+                    <g:if test="${params?.sort == 'totalPrice'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>进货总价（万）</th>
+                <th class="cursorPointer" onclick="javascript:setSort('orderTime');">
+                    <g:if test="${params?.sort == 'orderTime'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>订单时间</th>
+                <th class="cursorPointer" onclick="javascript:setSort('supplier');">
+                    <g:if test="${params?.sort == 'supplier'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>供应商</th>
+                <th class="cursorPointer" onclick="javascript:setSort('storageStatus');">
+                    <g:if test="${params?.sort == 'storageStatus'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>入库状态</th>
+                <th class="cursorPointer" onclick="javascript:setSort('dateCreated');">
+                    <g:if test="${params?.sort == 'dateCreated'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>创建时间</th>
                 <th>操作</th>
             </tr>
             </thead>

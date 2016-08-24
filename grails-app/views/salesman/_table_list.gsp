@@ -3,13 +3,27 @@
         <table id="salesmanTable" class="table table-hover table-bordered table-striped table-condensed">
             <thead>
             <tr>
-                <th>工号</th>
-                <th>姓名</th>
-                <th>性别</th>
-                <th>手机</th>
-                <th>工作电话</th>
-                <th>工作邮箱</th>
-                <th>创建时间</th>
+                <th class="cursorPointer" onclick="javascript:setSort('staffCode');">
+                    <g:if test="${params?.sort == 'staffCode'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>工号</th>
+                <th class="cursorPointer" onclick="javascript:setSort('realName');">
+                    <g:if test="${params?.sort == 'realName'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>姓名</th>
+                <th class="cursorPointer" onclick="javascript:setSort('sex');">
+                    <g:if test="${params?.sort == 'sex'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>性别</th>
+                <th class="cursorPointer" onclick="javascript:setSort('telephone');">
+                    <g:if test="${params?.sort == 'telephone'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>手机</th>
+                <th class="cursorPointer" onclick="javascript:setSort('phone');">
+                    <g:if test="${params?.sort == 'phone'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>工作电话</th>
+                <th class="cursorPointer" onclick="javascript:setSort('email');">
+                    <g:if test="${params?.sort == 'email'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>工作邮箱</th>
+                <th class="cursorPointer" onclick="javascript:setSort('dateCreated');">
+                    <g:if test="${params?.sort == 'dateCreated'}"><i
+                            class="fa fa-sort-amount-${params.order}"></i></g:if>创建时间</th>
                 <th>操作</th>
             </tr>
             </thead>
