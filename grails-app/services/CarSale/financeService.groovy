@@ -5,7 +5,7 @@ import grails.transaction.Transactional
 import java.text.SimpleDateFormat
 
 @Transactional
-class financeService {
+class FinanceService {
 
     def getIncomeList(params) {
 

@@ -63,6 +63,7 @@ dependencies {
     compile "org.grails.plugins:cache"
     compile "org.hibernate:hibernate-ehcache"
     compile "org.grails.plugins:scaffolding"
+    compile "org.apache.poi:poi:3.14"
 
     runtime "org.grails.plugins:asset-pipeline"
     runtime "mysql:mysql-connector-java:5.1.29"

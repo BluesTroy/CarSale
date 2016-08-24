@@ -1,12 +1,14 @@
 package CarSale
 
 import grails.converters.JSON
+import org.apache.commons.lang.StringUtils
 
 class OrderInfoController {
 
     static layout = "main"
 
     def orderInfoService
+    def utilService
 
     def loadPage() {
         def result = search(params)
@@ -141,5 +143,44 @@ class OrderInfoController {
             render result as JSON
         }
 
+    }
+
+    /**
+     * 将所有订单导出为excel
+     */
+    def exportExcel() {
+        log.debug("----------exportExcel------------")
+        log.debug(params)
+        def titleList = ["订单编号","下单时间","出库时间","销售内容","销售总数","总价格（万元）","销售员","客户"]
+        def contentList = []
+        def orderList = OrderInfo.listOrderByOrderTime()
+        orderList.each {
+            def contentCellList = []
+            String orderCode = StringUtils.trimToEmpty(it.orderCode)    //订单编号
+            String orderTime = StringUtils.trimToEmpty(g.formatDate(formatName: "default.date.format.date", date: it.orderTime).toString()) //下单时间
+            String outTime = StringUtils.trimToEmpty(g.formatDate(formatName: "default.date.format.date", date: it.outTime).toString()) //出库时间
+            String saleContent = '' //销售内容
+            it.orderDetails.each {
+                saleContent+=it.carInfo.carBrand+it.number+"辆；"
+            }
+            String saleNumber = StringUtils.trimToEmpty(it.saleNumber.toString())  //销售总数
+            String totalPrice = StringUtils.trimToEmpty(it.totalPrice.toString())  //总价格（万元）
+            String salesman = StringUtils.trimToEmpty(it.salesman.realName) //销售员
+            String customer = StringUtils.trimToEmpty(it.customer.name) //客户
+
+            contentCellList.add(orderCode)
+            contentCellList.add(orderTime)
+            contentCellList.add(outTime)
+            contentCellList.add(saleContent)
+            contentCellList.add(saleNumber)
+            contentCellList.add(totalPrice)
+            contentCellList.add(salesman)
+            contentCellList.add(customer)
+            contentList.add(contentCellList)
+        }
+
+        response.setHeader("Content-disposition", "attachment; filename=Order.xls")
+        response.setContentType("application/vnd.ms-excel")
+        utilService.buildExcel(response.outputStream, titleList, contentList)
     }
 }

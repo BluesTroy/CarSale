@@ -48,6 +48,9 @@
                             <button type="button" class="btn btn-primary"
                                     onclick="javascript:resetPage();">重置</button>
                         </div>
+                        <div class="col-md-2 col-md-offset-1">
+                            <button type="button" class="btn btn-success" onclick="window.location.href='/orderInfo/exportExcel'" ><i class="fa fa-download"></i> 导出Excel</button>
+                        </div>
 
                     </div>
                 </div><!-- /.box-body -->

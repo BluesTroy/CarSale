@@ -1,12 +1,14 @@
 package CarSale
 
 import grails.converters.JSON
+import org.apache.commons.lang.StringUtils
 
 class PurchaseOrderController {
 
     static layout = "main"
 
     def purchaseOrderService
+    def utilService
 
     def loadPage() {
         def result = search(params)
@@ -104,5 +106,46 @@ class PurchaseOrderController {
             render result as JSON
         }
 
+    }
+
+    /**
+     * 将所有订单导出为excel
+     */
+    def exportExcel() {
+        log.debug("----------exportExcel------------")
+        log.debug(params)
+        def titleList = ["订单编号","汽车品牌","进货单价（万）","汽车数量","进货总价（万）","订单时间","供应商","入库状态"]
+        def contentList = []
+        def orderList = PurchaseOrder.listOrderByOrderTime()
+        orderList.each {
+            def contentCellList = []
+            String orderCode = StringUtils.trimToEmpty(it.orderCode)    //订单编号
+            String carBrand = StringUtils.trimToEmpty(it.carInfo.carBrand)  //汽车品牌
+            String singlePrice = StringUtils.trimToEmpty(it.singlePrice.toString())    //进货单价（万）
+            String carNumber = StringUtils.trimToEmpty(it.carNumber.toString())    //汽车数量
+            String totalPrice = StringUtils.trimToEmpty(it.totalPrice.toString())    //进货总价（万）
+            String orderTime = StringUtils.trimToEmpty(g.formatDate(formatName: "default.date.format.date", date: it.orderTime).toString()) //订单时间
+            String supplier = StringUtils.trimToEmpty(it.supplier.supplierName) //供应商
+            String storageStatus = '' //入库状态
+            if (it.storageStatus){
+                storageStatus = '已入库'
+            }else {
+                storageStatus = '未入库'
+            }
+
+            contentCellList.add(orderCode)
+            contentCellList.add(carBrand)
+            contentCellList.add(singlePrice)
+            contentCellList.add(carNumber)
+            contentCellList.add(totalPrice)
+            contentCellList.add(orderTime)
+            contentCellList.add(supplier)
+            contentCellList.add(storageStatus)
+            contentList.add(contentCellList)
+        }
+
+        response.setHeader("Content-disposition", "attachment; filename=PurchaseOrder.xls")
+        response.setContentType("application/vnd.ms-excel")
+        utilService.buildExcel(response.outputStream, titleList, contentList)
     }
 }
