@@ -79,19 +79,7 @@
                         data: bdata.dataList,
                     }
                 ]
-                /*datasets: [
-                    {
-                        label: "销售额（万元）",
-                        backgroundColor: "rgba(37,149,27,0.2)",
-                        borderColor: "rgba(37,149,27,1)",
-                        borderWidth: 1,
-                        hoverBackgroundColor: "rgba(37,149,27,0.4)",
-                        hoverBorderColor: "rgba(37,149,27,1)",
-                        data: bdata.priceList,
-                    }
-                ]*/
             };
-
             new Chart(ctx, {
                 type: "line",
                 data: data,
@@ -99,10 +87,6 @@
                 }
             });
         });
-
-
-
-
     });
 
 

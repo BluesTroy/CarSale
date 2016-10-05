@@ -1,6 +1,5 @@
 <!-- Main Header -->
 <header class="main-header">
-
     <!-- Logo -->
     <a href="index2.html" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -18,38 +17,6 @@
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-                <!-- Messages: style can be found in dropdown.less-->
-                %{--<li class="dropdown messages-menu">--}%
-                %{--<!-- Menu toggle button -->--}%
-                %{--<a href="#" class="dropdown-toggle" data-toggle="dropdown">--}%
-                %{--<i class="fa fa-envelope-o"></i>--}%
-                %{--<span class="label label-success">4</span>--}%
-                %{--</a>--}%
-                %{--<ul class="dropdown-menu">--}%
-                %{--<li class="header">你有 4 条消息</li>--}%
-                %{--<li>--}%
-                %{--<!-- inner menu: contains the messages -->--}%
-                %{--<ul class="menu">--}%
-                %{--<li><!-- start message -->--}%
-                %{--<a href="#">--}%
-                %{--<div class="pull-left">--}%
-                %{--<!-- User Image -->--}%
-                %{--<img src="${resource(dir: 'assets/img', file: 'avatar5.png')}" class="img-circle" alt="User Image">--}%
-                %{--</div>--}%
-                %{--<!-- Message title and timestamp -->--}%
-                %{--<h4>--}%
-                %{--有订单需要发货--}%
-                %{--<small><i class="fa fa-clock-o"></i> 5 分钟</small>--}%
-                %{--</h4>--}%
-                %{--<!-- The message -->--}%
-                %{--<p>今天订单增加了许多，需要及时处理</p>--}%
-                %{--</a>--}%
-                %{--</li><!-- end message -->--}%
-                %{--</ul><!-- /.menu -->--}%
-                %{--</li>--}%
-                %{--<li class="footer"><a href="#">查看所有消息</a></li>--}%
-                %{--</ul>--}%
-                %{--</li><!-- /.messages-menu -->--}%
                 <li>
                 <a href="/staffInfo/welcome" class="dropdown-toggle">
                 <!-- The user image in the navbar-->

@@ -179,10 +179,6 @@
 
                                 });
                             } else {
-//                                $("#tr_" + id).remove();
-//                                var total = parseInt($("#domainTotalCount").html()) - 1;
-//                                total = total <= 0 ? 0 : total;
-//                                $("#domainTotalCount").html(total);
                                 $("#offset").val('0');
                                 loadPage();
                                 if ($("#id") != null && $("#id").val() == id) {

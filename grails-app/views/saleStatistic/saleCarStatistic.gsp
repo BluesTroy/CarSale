@@ -101,14 +101,12 @@
                     }
                 ]
             };
-
             new Chart(ctx, {
                 type: "bar",
                 data: data,
                 options: {
                 }
             });
-
             new Chart(ctx2, {
                 type: "bar",
                 data: data2,
@@ -116,10 +114,6 @@
                 }
             });
         });
-
-
-
-
     });
 
 

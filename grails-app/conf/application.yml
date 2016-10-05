@@ -1,6 +1,6 @@
 server:
-    port: 80
-    domain: 'www.bluestroy.com'
+    port: 8080
+    domain: 'carsale.bluestroy.com'
 ---
 datalist:
     max: 5
@@ -87,10 +87,10 @@ dataSource:
     jmxExport: true
 #    driverClassName:   org.h2.Driver
     driverClassName:   com.mysql.jdbc.Driver
-#    username: root
-#    password: 123456
-    username: root_dev
+    username: root
     password: 123456
+#    username: root_dev
+#    password: 123456
 
 environments:
     development:
